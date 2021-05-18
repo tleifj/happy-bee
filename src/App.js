@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import Letter from './components/Letter';
+import Message from './components/Message';
 
 class App extends React.Component {
   letters = ['A', 'B', 'C', 'D'];
@@ -9,10 +10,26 @@ class App extends React.Component {
   state = {
     guess:  '',
     foundWords: [],
+    messageActive: false,
+    messageType: '',
   };
   checkGuess = () => {
-    this.setState({guess: 'new guess'});
+    // this.setState({guess: 'new guess'});
     console.log(this.state);
+    if (this.words.includes(this.state.guess)) {
+      let newFoundWords = [...this.state.foundWords, this.state.guess];
+      this.setState({foundWords: newFoundWords});
+      
+      this.setState({messageType: 'score'});
+      
+    } else {
+      this.setState({messageType: 'error'});
+    }
+    this.setState({messageActive: true});
+    setTimeout(() => {
+      this.setState({messageActive: false});
+    }, 1000)
+    this.setState({guess: ''});
   };
   deleteFromGuess = () => {
     let guess = this.state.guess;
@@ -33,9 +50,16 @@ class App extends React.Component {
         <Letter key={key} text={key} addToGuess={this.addToGuess}></Letter>
       ))}
       {/* <div><div onClick={(e) => {this.addToGuess(e.target.innerHTML)}}>A</div><div>B</div><div>C</div></div> */}
+      <Message messageActive={this.state.messageActive} messageType={this.state.messageType} />
       <p>{this.state.guess}</p>
       <button onClick={this.deleteFromGuess}>Delete</button>
       <button onClick={this.checkGuess}>Submit</button>
+      <div>
+        <h2>Found Words</h2>
+        {this.state.foundWords.map( (key)=> (
+          <li key={key}>{key}</li>
+        ))}
+      </div>
     </div>
   );
     }
