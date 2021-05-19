@@ -13,17 +13,20 @@ class App extends React.Component {
     messageActive: false,
     messageType: '',
   };
-  checkGuess = () => {
-    // this.setState({guess: 'new guess'});
-    console.log(this.state);
+  checkGuess = () => {    
     if (this.words.includes(this.state.guess)) {
       let newFoundWords = [...this.state.foundWords, this.state.guess];
       this.setState({foundWords: newFoundWords});
       
-      this.setState({messageType: 'score'});
-      
+      this.setState({messageType: 'Score!'}, () => {
+        console.log(this.state.foundWords);
+        console.log(this.words);
+        if (this.state.foundWords.length === this.words.length) {
+          alert("You won!");
+        }
+      });   
     } else {
-      this.setState({messageType: 'error'});
+      this.setState({messageType: 'Error'});
     }
     this.setState({messageActive: true});
     setTimeout(() => {
@@ -55,7 +58,7 @@ class App extends React.Component {
       <button onClick={this.deleteFromGuess}>Delete</button>
       <button onClick={this.checkGuess}>Submit</button>
       <div>
-        <h2>Found Words</h2>
+        {/* <h2>Found Words</h2> */}
         {this.state.foundWords.map( (key)=> (
           <li key={key}>{key}</li>
         ))}

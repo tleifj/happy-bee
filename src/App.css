@@ -3,7 +3,9 @@
 }
 
 .message {
-  border: 1px solid black;
+  background: black;
+  border-radius: 2px;
+  color: #fff;
   width: 50px;
   margin: auto;
   opacity: 0;
@@ -14,4 +16,8 @@
   opacity: 1;
 }
 
+.message--score {
+  /* background: #f8cd05; */
+  color: black;
+}
 
