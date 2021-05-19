@@ -42,3 +42,18 @@
   color: black;
 }
 
+.progress-dot-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  margin: auto;
+}
+.progress-dot {
+  display: inline-block;
+  background: gray;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+

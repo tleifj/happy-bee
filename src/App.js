@@ -8,7 +8,7 @@ import WinOverlay from './components/WinOverlay';
 
 class App extends React.Component {
   letters = ['A', 'B', 'C', 'D'];
-  words = ['BAD', 'CAB'];
+  words = ['BAD', 'CAB', 'DAB'];
   state = {
     introScreen: true,
     winScreen: false,
@@ -60,11 +60,10 @@ class App extends React.Component {
     <div className="App">
       <IntroOverlay introScreen={this.state.introScreen} startGame={this.startGame} />
       <WinOverlay winScreen={this.state.winScreen} closeWinScreen={this.closeWinScreen}/>
-      <Header title="Test Header"></Header>
+      <Header words={this.words} foundWords={this.state.foundWords} title="Test Header" />
       {this.letters.map((key) => (
         <Letter key={key} text={key} addToGuess={this.addToGuess}></Letter>
       ))}
-      {/* <div><div onClick={(e) => {this.addToGuess(e.target.innerHTML)}}>A</div><div>B</div><div>C</div></div> */}
       <Message messageActive={this.state.messageActive} messageType={this.state.messageType} />
       <p>{this.state.guess}</p>
       <button onClick={this.deleteFromGuess}>Delete</button>
