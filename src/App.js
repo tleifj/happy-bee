@@ -1,18 +1,28 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
+import IntroOverlay from './components/IntroOverlay';
 import Letter from './components/Letter';
 import Message from './components/Message';
+import WinOverlay from './components/WinOverlay';
 
 class App extends React.Component {
   letters = ['A', 'B', 'C', 'D'];
   words = ['BAD', 'CAB'];
   state = {
+    introScreen: true,
+    winScreen: false,
     guess:  '',
     foundWords: [],
     messageActive: false,
     messageType: '',
   };
+  startGame = () => {
+    this.setState({introScreen: false});
+  }
+  closeWinScreen = () => {
+    this.setState({winScreen: false});
+  }
   checkGuess = () => {    
     if (this.words.includes(this.state.guess)) {
       let newFoundWords = [...this.state.foundWords, this.state.guess];
@@ -22,7 +32,7 @@ class App extends React.Component {
         console.log(this.state.foundWords);
         console.log(this.words);
         if (this.state.foundWords.length === this.words.length) {
-          alert("You won!");
+          this.setState({winScreen: true});
         }
       });   
     } else {
@@ -48,6 +58,8 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
+      <IntroOverlay introScreen={this.state.introScreen} startGame={this.startGame} />
+      <WinOverlay winScreen={this.state.winScreen} closeWinScreen={this.closeWinScreen}/>
       <Header title="Test Header"></Header>
       {this.letters.map((key) => (
         <Letter key={key} text={key} addToGuess={this.addToGuess}></Letter>
