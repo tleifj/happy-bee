@@ -6,11 +6,13 @@ class Header extends React.Component {
             console.log(index);
        })
         return <header>
+            <div className="container">
+            <span className="progress-message">Progress Message</span>
             <div className="progress-dot-container">
-                <span>Progress Message</span>
             {this.props.words.map((el, index) => (
                 <span className="progress-dot"></span>
             ))}
+            </div>
             </div>
     </header>
     }

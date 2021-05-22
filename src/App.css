@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .overlay {
   position: fixed;
   top:0;
@@ -16,6 +23,7 @@
   transition: opacity 0.3s ease;
   opacity: 0;
   visibility: hidden;
+  z-index: 2;
 }
 
 .overlay--open {
@@ -31,6 +39,10 @@
   margin: auto;
   opacity: 0;
   transition: all 0.3s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 15px;
 }
 
 .message--active {
@@ -42,18 +54,57 @@
   color: black;
 }
 
+header {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+}
+
+.progress-message {
+  font-weight: bold;
+}
+
 .progress-dot-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 90%;
-  margin: auto;
+  flex-grow: 1;
+  position: relative;
+  margin-left: 16px;
+}
+.progress-dot-container::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 0.5px);
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color:#dcdcdc;
 }
 .progress-dot {
   display: inline-block;
-  background: gray;
-  width: 5px;
-  height: 5px;
+  background: #dcdcdc;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+}
+
+.progress-dot:last-child {
+  border-radius: 0;
+}
+
+.guess-input {
+  font-size: 32px;
+  font-weight: bold;
+  height: 38px;
+}
+
+.letter {
+  font-size: 30px;
+  font-weight: bold;
 }
 

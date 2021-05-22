@@ -7,8 +7,8 @@ import Message from './components/Message';
 import WinOverlay from './components/WinOverlay';
 
 class App extends React.Component {
-  letters = ['A', 'B', 'C', 'D'];
-  words = ['BAD', 'CAB', 'DAB'];
+  letters = ['A', 'H', 'C', 'T', 'Y', 'L', 'P', 'B', 'I', 'R'];
+  words = ['CAT', 'HAT', 'RIB'];
   state = {
     introScreen: true,
     winScreen: false,
@@ -61,11 +61,14 @@ class App extends React.Component {
       <IntroOverlay introScreen={this.state.introScreen} startGame={this.startGame} />
       <WinOverlay winScreen={this.state.winScreen} closeWinScreen={this.closeWinScreen}/>
       <Header words={this.words} foundWords={this.state.foundWords} title="Test Header" />
+      <Message messageActive={this.state.messageActive} messageType={this.state.messageType} />
+      <p className="guess-input">{this.state.guess}</p>
+      <div className="letter-container">
       {this.letters.map((key) => (
         <Letter key={key} text={key} addToGuess={this.addToGuess}></Letter>
       ))}
-      <Message messageActive={this.state.messageActive} messageType={this.state.messageType} />
-      <p>{this.state.guess}</p>
+      </div>
+      
       <button onClick={this.deleteFromGuess}>Delete</button>
       <button onClick={this.checkGuess}>Submit</button>
       <div>
