@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  width:100%;
+  height: 100vh;
+  max-width: 375px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button {
@@ -60,7 +65,7 @@ button:focus {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  padding: 5px 15px;
+  padding: 5px 10px;
 }
 
 .message--active {
@@ -75,6 +80,7 @@ button:focus {
 header {
   padding-top: 32px;
   padding-bottom: 32px;
+  width:100%;
 }
 
 header .container {
@@ -84,6 +90,7 @@ header .container {
 
 .progress-message {
   font-weight: bold;
+  min-width: 70px;
 }
 
 .progress-dot-container {
@@ -110,6 +117,9 @@ header .container {
   height: 10px;
   border-radius: 50%;
 }
+.progress-dot--complete {
+  background: #f8cd05;
+}
 
 .progress-dot:last-child {
   border-radius: 0;
@@ -121,8 +131,60 @@ header .container {
   height: 38px;
 }
 
+.letter-container {
+  display: flex;
+  flex-wrap: wrap;
+  width:332px;
+  margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+}
+
 .letter {
   font-size: 30px;
   font-weight: bold;
+  position: relative;
+  background: #e6e6e6;
+  height:45px;
+  width:75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4px;
+  margin-right:4px;
+  margin-bottom: 30px;
+}
+
+.letter:nth-child(5) {
+  margin-left:45.5px;
+}
+
+.letter::before {
+  position: absolute;
+  content: '';
+  width: 0;
+  border-bottom: 22.5px solid #e6e6e6;
+  border-left: 39px solid transparent;
+  border-right: 39px solid transparent;
+  top: -22.5px;
+}
+
+.letter::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  border-top: 22.5px solid #e6e6e6;
+  border-left: 39px solid transparent;
+  border-right: 39px solid transparent;
+  bottom: -22.5px;
+}
+
+.found-words p {
+  font-weight: bold;
+}
+
+.found-words li {
+  list-style-type: none;
+  margin-bottom: 8px;
 }
 

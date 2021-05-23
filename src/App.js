@@ -7,7 +7,7 @@ import Message from './components/Message';
 import WinOverlay from './components/WinOverlay';
 
 class App extends React.Component {
-  letters = ['A', 'H', 'C', 'T', 'Y', 'L', 'P', 'B', 'I', 'R'];
+  letters = ['A', 'H', 'C', 'T', 'Y', 'L', 'D', 'P', 'B', 'I', 'R'];
   words = ['CAT', 'HAT', 'RIB'];
   state = {
     introScreen: true,
@@ -16,6 +16,7 @@ class App extends React.Component {
     foundWords: [],
     messageActive: false,
     messageType: '',
+    progressMessage: 'Beginner'
   };
   startGame = () => {
     this.setState({introScreen: false});
@@ -31,8 +32,15 @@ class App extends React.Component {
       this.setState({messageType: 'Score!'}, () => {
         console.log(this.state.foundWords);
         console.log(this.words);
+        if (this.state.foundWords.length === (this.words.length - 2)) {
+          this.setState({progressMessage: 'Good'})
+        }
+        if (this.state.foundWords.length === (this.words.length - 1)) {
+          this.setState({progressMessage: 'Amazing'})
+        }
         if (this.state.foundWords.length === this.words.length) {
           this.setState({winScreen: true});
+          this.setState({progressMessage: 'Genius!'});
         }
       });   
     } else {
@@ -60,7 +68,7 @@ class App extends React.Component {
     <div className="App">
       <IntroOverlay introScreen={this.state.introScreen} startGame={this.startGame} />
       <WinOverlay winScreen={this.state.winScreen} closeWinScreen={this.closeWinScreen}/>
-      <Header words={this.words} foundWords={this.state.foundWords} title="Test Header" />
+      <Header words={this.words} foundWords={this.state.foundWords} progressMessage={this.state.progressMessage} />
       <Message messageActive={this.state.messageActive} messageType={this.state.messageType} />
       <p className="guess-input">{this.state.guess}</p>
       <div className="letter-container">
@@ -71,8 +79,8 @@ class App extends React.Component {
       
       <button onClick={this.deleteFromGuess}>Delete</button>
       <button onClick={this.checkGuess}>Submit</button>
-      <div>
-        {/* <h2>Found Words</h2> */}
+      <div className="found-words">
+        <p>Found Words</p>
         {this.state.foundWords.map( (key)=> (
           <li key={key}>{key}</li>
         ))}
