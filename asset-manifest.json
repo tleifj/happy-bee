@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/happy-bee/static/css/main.bdbef755.chunk.css",
+    "main.js": "/happy-bee/static/js/main.be001b83.chunk.js",
+    "main.js.map": "/happy-bee/static/js/main.be001b83.chunk.js.map",
+    "runtime-main.js": "/happy-bee/static/js/runtime-main.d3747507.js",
+    "runtime-main.js.map": "/happy-bee/static/js/runtime-main.d3747507.js.map",
+    "static/js/2.f44ebc6a.chunk.js": "/happy-bee/static/js/2.f44ebc6a.chunk.js",
+    "static/js/2.f44ebc6a.chunk.js.map": "/happy-bee/static/js/2.f44ebc6a.chunk.js.map",
+    "static/js/3.fb25f1c1.chunk.js": "/happy-bee/static/js/3.fb25f1c1.chunk.js",
+    "static/js/3.fb25f1c1.chunk.js.map": "/happy-bee/static/js/3.fb25f1c1.chunk.js.map",
+    "index.html": "/happy-bee/index.html",
+    "static/css/main.bdbef755.chunk.css.map": "/happy-bee/static/css/main.bdbef755.chunk.css.map",
+    "static/js/2.f44ebc6a.chunk.js.LICENSE.txt": "/happy-bee/static/js/2.f44ebc6a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d3747507.js",
+    "static/js/2.f44ebc6a.chunk.js",
+    "static/css/main.bdbef755.chunk.css",
+    "static/js/main.be001b83.chunk.js"
+  ]
+}
