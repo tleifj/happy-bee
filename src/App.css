@@ -1,23 +1,36 @@
 .App {
   text-align: center;
-  width:100%;
+  width: 100%;
   height: 100vh;
   max-width: 375px;
   margin-left: auto;
   margin-right: auto;
 }
 
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Zilla Slab", serif;
+}
+
 button {
   padding: 15px 20px;
-    min-width: 90px;
-    max-width: 120px;
-    flex: 1;
-    background-color: white;
-    font-size: 18px;
-    margin: 0 12px;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 40px;
+  min-width: 90px;
+  max-width: 120px;
+  flex: 1;
+  background-color: white;
+  font-size: 18px;
+  margin: 0 12px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 40px;
 }
 
 button:focus {
@@ -33,7 +46,7 @@ button:focus {
 
 .overlay {
   position: fixed;
-  top:0;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -46,7 +59,28 @@ button:focus {
   opacity: 0;
   visibility: hidden;
   z-index: 2;
-  background:  #f8cd05;
+  background: #f8cd05;
+}
+
+.overlay h1 {
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 700;
+}
+
+.overlay h2 {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.overlay__inner {
+  max-width: 75%;
+}
+
+.bee-icon {
+  display: block;
+  margin: 0 auto 32px;
 }
 
 .overlay--open {
@@ -80,7 +114,7 @@ button:focus {
 header {
   padding-top: 32px;
   padding-bottom: 32px;
-  width:100%;
+  width: 100%;
 }
 
 header .container {
@@ -102,15 +136,16 @@ header .container {
   margin-left: 16px;
 }
 .progress-dot-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(50% - 0.5px);
   left: 0;
   width: 100%;
   height: 1px;
-  background-color:#dcdcdc;
+  background-color: #dcdcdc;
 }
 .progress-dot {
+  position: relative;
   display: inline-block;
   background: #dcdcdc;
   width: 10px;
@@ -134,10 +169,10 @@ header .container {
 .letter-container {
   display: flex;
   flex-wrap: wrap;
-  width:332px;
+  width: 332px;
   margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 60px;
+  margin-right: auto;
+  margin-bottom: 60px;
 }
 
 .letter {
@@ -145,23 +180,23 @@ header .container {
   font-weight: bold;
   position: relative;
   background: #e6e6e6;
-  height:45px;
-  width:75px;
+  height: 45px;
+  width: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 4px;
-  margin-right:4px;
+  margin-right: 4px;
   margin-bottom: 30px;
 }
 
 .letter:nth-child(5) {
-  margin-left:45.5px;
+  margin-left: 45.5px;
 }
 
 .letter::before {
   position: absolute;
-  content: '';
+  content: "";
   width: 0;
   border-bottom: 22.5px solid #e6e6e6;
   border-left: 39px solid transparent;
@@ -171,7 +206,7 @@ header .container {
 
 .letter::after {
   position: absolute;
-  content: '';
+  content: "";
   width: 0;
   border-top: 22.5px solid #e6e6e6;
   border-left: 39px solid transparent;
@@ -187,4 +222,3 @@ header .container {
   list-style-type: none;
   margin-bottom: 8px;
 }
-
