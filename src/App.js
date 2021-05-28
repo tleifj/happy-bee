@@ -25,62 +25,67 @@ class App extends React.Component {
     this.setState({ winScreen: false });
   };
   checkGuess = () => {
-    if (this.words.includes(this.state.guess)) {
-      let newFoundWords = [...this.state.foundWords, this.state.guess];
-      this.setState({ foundWords: newFoundWords });
-
-      this.setState({ messageType: "Score!" }, () => {
-        console.log(this.state.foundWords);
-        console.log(this.words);
-        if (this.state.foundWords.length === this.words.length - 2) {
-          this.setState({ progressMessage: "Good" });
-        }
-        if (this.state.foundWords.length === this.words.length - 1) {
-          this.setState({ progressMessage: "Amazing" });
-        }
-        if (this.state.foundWords.length === this.words.length) {
-          this.setState({ winScreen: true });
-          this.setState({ progressMessage: "Genius!" });
-          window.navigator.vibrate(700);
-          var count = 200;
-          var defaults = {
-            origin: { y: 0.7 },
-          };
-
-          function fire(particleRatio, opts) {
-            window.confetti(
-              Object.assign({}, defaults, opts, {
-                particleCount: Math.floor(count * particleRatio),
-              })
-            );
-          }
-
-          fire(0.25, {
-            spread: 26,
-            startVelocity: 55,
-          });
-          fire(0.2, {
-            spread: 60,
-          });
-          fire(0.35, {
-            spread: 100,
-            decay: 0.91,
-            scalar: 0.8,
-          });
-          fire(0.1, {
-            spread: 120,
-            startVelocity: 25,
-            decay: 0.92,
-            scalar: 1.2,
-          });
-          fire(0.1, {
-            spread: 120,
-            startVelocity: 45,
-          });
-        }
-      });
+    if (this.state.foundWords.includes(this.state.guess)) {
+      this.setState({ messageType: "Word already found" });
     } else {
-      this.setState({ messageType: "Error" });
+      if (
+        this.words.includes(this.state.guess) &&
+        !this.state.foundWords.includes(this.state.guess)
+      ) {
+        let newFoundWords = [...this.state.foundWords, this.state.guess];
+        this.setState({ foundWords: newFoundWords });
+
+        this.setState({ messageType: "Score!" }, () => {
+          if (this.state.foundWords.length === this.words.length - 2) {
+            this.setState({ progressMessage: "Good" });
+          }
+          if (this.state.foundWords.length === this.words.length - 1) {
+            this.setState({ progressMessage: "Amazing" });
+          }
+          if (this.state.foundWords.length === this.words.length) {
+            this.setState({ winScreen: true });
+            this.setState({ progressMessage: "Genius!" });
+            window.navigator.vibrate(700);
+            var count = 200;
+            var defaults = {
+              origin: { y: 0.7 },
+            };
+
+            function fire(particleRatio, opts) {
+              window.confetti(
+                Object.assign({}, defaults, opts, {
+                  particleCount: Math.floor(count * particleRatio),
+                })
+              );
+            }
+
+            fire(0.25, {
+              spread: 26,
+              startVelocity: 55,
+            });
+            fire(0.2, {
+              spread: 60,
+            });
+            fire(0.35, {
+              spread: 100,
+              decay: 0.91,
+              scalar: 0.8,
+            });
+            fire(0.1, {
+              spread: 120,
+              startVelocity: 25,
+              decay: 0.92,
+              scalar: 1.2,
+            });
+            fire(0.1, {
+              spread: 120,
+              startVelocity: 45,
+            });
+          }
+        });
+      } else {
+        this.setState({ messageType: "Error" });
+      }
     }
     this.setState({ messageActive: true });
     setTimeout(() => {
