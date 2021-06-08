@@ -189,10 +189,6 @@ header .container {
   margin-bottom: 30px;
 }
 
-.letter:nth-child(5) {
-  margin-left: 45.5px;
-}
-
 .letter::before {
   position: absolute;
   content: "";
@@ -211,6 +207,22 @@ header .container {
   border-left: 39px solid transparent;
   border-right: 39px solid transparent;
   bottom: -22.5px;
+}
+
+.letter:nth-child(5) {
+  margin-left: 45.5px;
+}
+
+.letter:nth-child(6) {
+  background: #f8cd05;
+}
+
+.letter:nth-child(6)::after {
+  border-top-color: #f8cd05;
+}
+
+.letter:nth-child(6)::before {
+  border-bottom-color: #f8cd05;
 }
 
 .found-words p {
