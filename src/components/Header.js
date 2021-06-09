@@ -6,7 +6,7 @@ class Header extends React.Component {
     let active = 0;
     console.log(foundWords);
     levels.forEach((el, index) => {
-      if (score >= index * 10) {
+      if (score >= index * 100) {
         active = index;
       }
     });
@@ -20,7 +20,7 @@ class Header extends React.Component {
                 key={index}
                 className={
                   "progress-dot " +
-                  (score >= index * 10 ? "progress-dot--complete" : "") +
+                  (score >= index * 100 ? "progress-dot--complete" : "") +
                   " " +
                   (index === active ? "progress-dot--active" : "")
                 }
