@@ -2,10 +2,13 @@ import React from "react";
 class Header extends React.Component {
   render() {
     const { words, foundWords, progressMessage, score } = this.props;
-    const levels = [1, 2, 3, 4, 5];
+    const levels = [0, 1, 2, 3, 4, 5, 6];
+    let active = 0;
     console.log(foundWords);
-    words.forEach((el, index) => {
-      console.log(index);
+    levels.forEach((el, index) => {
+      if (score >= index * 10) {
+        active = index;
+      }
     });
     return (
       <header>
@@ -17,9 +20,13 @@ class Header extends React.Component {
                 key={index}
                 className={
                   "progress-dot " +
-                  (score >= index * 140 ? "progress-dot--complete" : "")
+                  (score >= index * 10 ? "progress-dot--complete" : "") +
+                  " " +
+                  (index === active ? "progress-dot--active" : "")
                 }
-              ></span>
+              >
+                <span>{score}</span>
+              </span>
             ))}
           </div>
         </div>

@@ -132,16 +132,55 @@ class App extends React.Component {
     "PATRIARCHAL",
     "HABITABILITY",
   ];
+  specialWords = ["HAPPY", "BIRTHDAY", "HILARY"];
   totalPoints = 696;
   state = {
     introScreen: true,
     winScreen: false,
     guess: "",
     foundWords: [],
+    foundSpecialWords: [],
     score: 0,
     messageActive: false,
     messageType: "",
     progressMessage: "Beginner",
+  };
+  celebrate = () => {
+    window.navigator.vibrate(700);
+    var count = 200;
+    var defaults = {
+      origin: { y: 0.7 },
+    };
+    function fire(particleRatio, opts) {
+      window.confetti(
+        Object.assign({}, defaults, opts, {
+          particleCount: Math.floor(count * particleRatio),
+        })
+      );
+    }
+
+    fire(0.25, {
+      spread: 26,
+      startVelocity: 55,
+    });
+    fire(0.2, {
+      spread: 60,
+    });
+    fire(0.35, {
+      spread: 100,
+      decay: 0.91,
+      scalar: 0.8,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 25,
+      decay: 0.92,
+      scalar: 1.2,
+    });
+    fire(0.1, {
+      spread: 120,
+      startVelocity: 45,
+    });
   };
   startGame = () => {
     this.setState({ introScreen: false });
@@ -150,68 +189,61 @@ class App extends React.Component {
     this.setState({ winScreen: false });
   };
   checkGuess = () => {
+    // If the word has already been found
     if (this.state.foundWords.includes(this.state.guess)) {
       this.setState({ messageType: "Word already found" });
     } else {
+      // If this is a word that hasn't been found yet
       if (
         this.words.includes(this.state.guess) &&
         !this.state.foundWords.includes(this.state.guess)
       ) {
+        // Create new array to add to state
         let newFoundWords = [...this.state.foundWords, this.state.guess];
         this.setState({ foundWords: newFoundWords });
         let newScore = this.state.score + this.state.guess.length;
         this.setState({ score: newScore });
 
+        // Positive popup message
         this.setState({ messageType: "Score!" }, () => {
-          if (this.state.foundWords.length === this.words.length - 2) {
-            this.setState({ progressMessage: "Good" });
-          }
-          if (this.state.foundWords.length === this.words.length - 1) {
-            this.setState({ progressMessage: "Amazing" });
-          }
-          if (this.state.foundWords.length === this.words.length) {
+          // Sets the Header message
+          // This is getting all points
+          if (this.state.score === 696) {
+            this.setState({ progressMessage: "Queen Bee" });
             this.setState({ winScreen: true });
+
+            this.celebrate();
+          } else if (this.state.score >= 600) {
             this.setState({ progressMessage: "Genius!" });
-            window.navigator.vibrate(700);
-            var count = 200;
-            var defaults = {
-              origin: { y: 0.7 },
-            };
-
-            function fire(particleRatio, opts) {
-              window.confetti(
-                Object.assign({}, defaults, opts, {
-                  particleCount: Math.floor(count * particleRatio),
-                })
-              );
-            }
-
-            fire(0.25, {
-              spread: 26,
-              startVelocity: 55,
-            });
-            fire(0.2, {
-              spread: 60,
-            });
-            fire(0.35, {
-              spread: 100,
-              decay: 0.91,
-              scalar: 0.8,
-            });
-            fire(0.1, {
-              spread: 120,
-              startVelocity: 25,
-              decay: 0.92,
-              scalar: 1.2,
-            });
-            fire(0.1, {
-              spread: 120,
-              startVelocity: 45,
-            });
+          } else if (this.state.score >= 500) {
+            this.setState({ progressMessage: "Amazing" });
+          } else if (this.state.score >= 400) {
+            this.setState({ progressMessage: "Great" });
+          } else if (this.state.score >= 300) {
+            this.setState({ progressMessage: "Solid" });
+          } else if (this.state.score >= 200) {
+            this.setState({ progressMessage: "Nice" });
+          } else if (this.state.score >= 100) {
+            this.setState({ progressMessage: "Good" });
           }
         });
       } else {
         this.setState({ messageType: "Error" });
+      }
+      if (
+        this.specialWords.includes(this.state.guess) &&
+        !this.state.foundSpecialWords.includes(this.state.guess)
+      ) {
+        let newFoundSpecialWords = [
+          ...this.state.foundSpecialWords,
+          this.state.guess,
+        ];
+        this.setState({ foundSpecialWords: newFoundSpecialWords }, () => {
+          if (this.state.foundSpecialWords.length === 3) {
+            this.setState({ winScreen: true });
+            this.celebrate();
+          }
+        });
       }
     }
     this.setState({ messageActive: true });
@@ -251,7 +283,9 @@ class App extends React.Component {
           messageActive={this.state.messageActive}
           messageType={this.state.messageType}
         />
-        <p className="guess-input">{this.state.guess}</p>
+        <div class="guess-input-container">
+          <p className="guess-input">{this.state.guess}</p>
+        </div>
         <div className="letter-container">
           {this.letters.map((key) => (
             <Letter key={key} text={key} addToGuess={this.addToGuess}></Letter>
@@ -263,7 +297,12 @@ class App extends React.Component {
         <div className="found-words">
           <p>Found Words</p>
           {this.state.foundWords.map((key) => (
-            <li key={key}>{key}</li>
+            <li
+              className={this.specialWords.includes(key) ? "special-word" : ""}
+              key={key}
+            >
+              {key}
+            </li>
           ))}
         </div>
       </div>

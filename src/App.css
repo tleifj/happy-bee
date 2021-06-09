@@ -151,18 +151,69 @@ header .container {
   height: 10px;
   border-radius: 50%;
 }
+.progress-dot span {
+  opacity: 0;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 .progress-dot--complete {
   background: #f8cd05;
+}
+
+.progress-dot--active {
+  width: 30px;
+  height: 30px;
+}
+
+.progress-dot--active span {
+  opacity: 1;
 }
 
 .progress-dot:last-child {
   border-radius: 0;
 }
 
+.guess-input-container {
+  height: 38px;
+  margin-top: 32px;
+  margin-bottom: 40px;
+}
+
 .guess-input {
   font-size: 32px;
   font-weight: bold;
-  height: 38px;
+  display: inline;
+
+  position: relative;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.guess-input::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -4px;
+  top: 0;
+  width: 2px;
+  height: 40px;
+  background: #f8cd05;
+  animation: 1000ms blink step-end infinite;
 }
 
 .letter-container {
@@ -232,4 +283,9 @@ header .container {
 .found-words li {
   list-style-type: none;
   margin-bottom: 8px;
+}
+
+.found-words li.special-word {
+  color: #f8cd05;
+  font-weight: bold;
 }
