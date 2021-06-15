@@ -5,16 +5,16 @@ class IntroOverlay extends React.Component {
     const { introScreen, startGame } = this.props;
     return (
       <div className={"overlay " + (introScreen ? "overlay--open" : "")}>
-        <div class="overlay__inner">
+        <div className="overlay__inner">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="81"
             height="81"
             viewBox="0 0 81 81"
             fill="none"
-            class="bee-icon"
+            className="bee-icon"
           >
-            <g clip-path="url(#clip0)">
+            <g clipPath="url(#clip0)">
               <path
                 d="M42.0259 30.2053V21.2053C42.0259 16.2053 38.0259 12.2053 33.0259 12.2053C28.0259 12.2053 24.0259 16.2053 24.0259 21.2053C24.0259 26.2053 28.0259 30.2053 33.0259 30.2053H42.0259Z"
                 fill="white"
@@ -59,7 +59,7 @@ class IntroOverlay extends React.Component {
           <h1>Happy Bee (Day)</h1>
           <h2>How many words can you find for your birthday?</h2>
           <button onClick={startGame}>Play</button>
-          <div class="overlay__bottom">
+          <div className="overlay__bottom">
             <p>July 4, 2021</p>
             <p>Edited by Travis Johnson</p>
           </div>

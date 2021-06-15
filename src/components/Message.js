@@ -10,7 +10,9 @@ class Message extends React.Component {
           "message " +
           (messageActive ? "message--active" : "") +
           " " +
-          (messageType === "Score!" ? "message--score" : "")
+          (messageType === "Score!" || messageType === "Longest Word!"
+            ? "message--score"
+            : "")
         }
       >
         {messageType}

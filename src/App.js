@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import IntroOverlay from "./components/IntroOverlay";
 import Letter from "./components/Letter";
 import Message from "./components/Message";
+import QueenBeeOverlay from "./components/QueenBeeOverlay";
 import WinOverlay from "./components/WinOverlay";
 
 class App extends React.Component {
@@ -137,6 +138,7 @@ class App extends React.Component {
   state = {
     introScreen: true,
     winScreen: false,
+    queenBeeScreen: false,
     guess: "",
     foundWords: [],
     foundSpecialWords: [],
@@ -145,8 +147,9 @@ class App extends React.Component {
     messageType: "",
     progressMessage: "Beginner",
   };
+
   celebrate = () => {
-    window.navigator.vibrate(700);
+    // window.navigator.vibrate(700);
     var count = 200;
     var defaults = {
       origin: { y: 0.7 },
@@ -188,6 +191,9 @@ class App extends React.Component {
   closeWinScreen = () => {
     this.setState({ winScreen: false });
   };
+  closeQueenBeeScreen = () => {
+    this.setState({ queenBeeScreen: false });
+  };
   checkGuess = () => {
     // If the word has already been found
     if (this.state.foundWords.includes(this.state.guess)) {
@@ -204,15 +210,39 @@ class App extends React.Component {
         let newScore = this.state.score + this.state.guess.length;
         this.setState({ score: newScore });
 
+        let positiveMessage = "Score!";
+        if (this.state.guess === "HABITABILITY") {
+          positiveMessage = "Longest Word!";
+        }
+
         // Positive popup message
-        this.setState({ messageType: "Score!" }, () => {
+        this.setState({ messageType: positiveMessage }, () => {
           // Sets the Header message
           // This is getting all points
           if (this.state.score === 696) {
             this.setState({ progressMessage: "Queen Bee" });
-            this.setState({ winScreen: true });
+            this.setState({ queenBeeScreen: true });
 
             this.celebrate();
+            setTimeout(() => {
+              this.celebrate();
+            }, 200);
+            this.celebrate();
+            setTimeout(() => {
+              this.celebrate();
+            }, 400);
+            this.celebrate();
+            setTimeout(() => {
+              this.celebrate();
+            }, 600);
+            this.celebrate();
+            setTimeout(() => {
+              this.celebrate();
+            }, 800);
+            this.celebrate();
+            setTimeout(() => {
+              this.celebrate();
+            }, 1000);
           } else if (this.state.score >= 600) {
             this.setState({ progressMessage: "Genius!" });
           } else if (this.state.score >= 500) {
@@ -272,6 +302,12 @@ class App extends React.Component {
         <WinOverlay
           winScreen={this.state.winScreen}
           closeWinScreen={this.closeWinScreen}
+        />
+        <QueenBeeOverlay
+          queenBeeScreen={this.state.queenBeeScreen}
+          closeQueenBeeScreen={this.closeQueenBeeScreen}
+          score={this.state.score}
+          foundWords={this.state.foundWords}
         />
         <Header
           words={this.words}

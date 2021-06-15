@@ -88,6 +88,15 @@ button:focus {
   visibility: visible;
 }
 
+.overlay--queen-bee {
+  background: #fff;
+}
+
+.overlay--queen-bee h1 {
+  font-size: 42px;
+  line-height: 48px;
+}
+
 .message {
   background: black;
   border-radius: 2px;
