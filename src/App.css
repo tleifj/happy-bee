@@ -253,20 +253,20 @@ header .container {
   position: absolute;
   content: "";
   width: 0;
-  border-bottom: 22.5px solid #e6e6e6;
-  border-left: 39px solid transparent;
-  border-right: 39px solid transparent;
-  top: -22.5px;
+  border-bottom: 23px solid #e6e6e6;
+  border-left: 38px solid transparent;
+  border-right: 38px solid transparent;
+  top: -3px;
 }
 
 .letter::after {
   position: absolute;
   content: "";
   width: 0;
-  border-top: 22.5px solid #e6e6e6;
-  border-left: 39px solid transparent;
-  border-right: 39px solid transparent;
-  bottom: -22.5px;
+  border-top: 23px solid #e6e6e6;
+  border-left: 38px solid transparent;
+  border-right: 38px solid transparent;
+  bottom: -23px;
 }
 
 .letter:nth-child(5) {
