@@ -256,7 +256,7 @@ header .container {
   border-bottom: 23px solid #e6e6e6;
   border-left: 38px solid transparent;
   border-right: 38px solid transparent;
-  top: -3px;
+  top: -23px;
 }
 
 .letter::after {
