@@ -147,7 +147,28 @@ class App extends React.Component {
     messageType: "",
     progressMessage: "Beginner",
   };
+  componentDidMount() {
+    const score = parseInt(localStorage.getItem("score"));
+    if (score) {
+      this.setState({ score });
+    }
 
+    const foundWords = JSON.parse(localStorage.getItem("foundWords"));
+    if (foundWords) {
+      this.setState({ foundWords });
+    }
+    // const foundSpecialWords = JSON.parse(
+    //   localStorage.getItem("foundSpecialWords")
+    // );
+    // if (foundSpecialWords) {
+    //   this.setState({ foundSpecialWords });
+    // }
+
+    const progressMessage = localStorage.getItem("progressMessage");
+    if (progressMessage) {
+      this.setState({ progressMessage });
+    }
+  }
   celebrate = () => {
     // window.navigator.vibrate(700);
     var count = 200;
@@ -207,8 +228,10 @@ class App extends React.Component {
         // Create new array to add to state
         let newFoundWords = [...this.state.foundWords, this.state.guess];
         this.setState({ foundWords: newFoundWords });
+        localStorage.setItem("foundWords", JSON.stringify(newFoundWords));
         let newScore = this.state.score + this.state.guess.length;
         this.setState({ score: newScore });
+        localStorage.setItem("score", `${newScore}`);
 
         let positiveMessage = "Score!";
         if (this.state.guess === "HABITABILITY") {
@@ -221,6 +244,7 @@ class App extends React.Component {
           // This is getting all points
           if (this.state.score === 696) {
             this.setState({ progressMessage: "Queen Bee" });
+            localStorage.setItem("progressMessage", "Queen Bee");
             this.setState({ queenBeeScreen: true });
 
             this.celebrate();
@@ -245,16 +269,22 @@ class App extends React.Component {
             }, 1000);
           } else if (this.state.score >= 600) {
             this.setState({ progressMessage: "Genius!" });
+            localStorage.setItem("progressMessage", "Genius!");
           } else if (this.state.score >= 500) {
             this.setState({ progressMessage: "Amazing" });
+            localStorage.setItem("progressMessage", "Amazing");
           } else if (this.state.score >= 400) {
             this.setState({ progressMessage: "Great" });
+            localStorage.setItem("progressMessage", "Great");
           } else if (this.state.score >= 300) {
             this.setState({ progressMessage: "Solid" });
+            localStorage.setItem("progressMessage", "Solid");
           } else if (this.state.score >= 200) {
             this.setState({ progressMessage: "Nice" });
+            localStorage.setItem("progressMessage", "Nice");
           } else if (this.state.score >= 100) {
             this.setState({ progressMessage: "Good" });
+            localStorage.setItem("progressMessage", "Good");
           }
         });
       } else {
@@ -274,6 +304,10 @@ class App extends React.Component {
             this.celebrate();
           }
         });
+        localStorage.setItem(
+          "foundSpecialWords",
+          JSON.stringify(newFoundSpecialWords)
+        );
       }
     }
     this.setState({ messageActive: true });
@@ -319,7 +353,7 @@ class App extends React.Component {
           messageActive={this.state.messageActive}
           messageType={this.state.messageType}
         />
-        <div class="guess-input-container">
+        <div className="guess-input-container">
           <p className="guess-input">{this.state.guess}</p>
         </div>
         <div className="letter-container">
