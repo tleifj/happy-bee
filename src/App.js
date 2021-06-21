@@ -227,6 +227,7 @@ class App extends React.Component {
       ) {
         // Create new array to add to state
         let newFoundWords = [...this.state.foundWords, this.state.guess];
+        newFoundWords.sort();
         this.setState({ foundWords: newFoundWords });
         localStorage.setItem("foundWords", JSON.stringify(newFoundWords));
         let newScore = this.state.score + this.state.guess.length;
