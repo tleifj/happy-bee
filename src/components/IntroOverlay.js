@@ -57,11 +57,18 @@ class IntroOverlay extends React.Component {
             </defs>
           </svg>
           <h1>Happy Bee (Day)</h1>
-          <h2>How many words can you find for your birthday?</h2>
+          <h2>
+            How many words can you find for your birthday in this super Spelling
+            Bee?
+          </h2>
           <button onClick={startGame}>Play</button>
           <div className="overlay__bottom">
-            <p>July 4, 2021</p>
-            <p>Edited by Travis Johnson</p>
+            <p style={{ marginBottom: 5 + "px" }}>
+              <strong>July 4, 2021</strong>
+            </p>
+            <p style={{ fontSize: 14 + "px", marginTop: 0 }}>
+              Edited by Travis Johnson
+            </p>
           </div>
         </div>
       </div>
