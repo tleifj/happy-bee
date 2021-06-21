@@ -14,6 +14,7 @@ class App extends React.Component {
     "ARCH",
     "BATH",
     "BLAH",
+    "CHAI",
     "CHAP",
     "CHAR",
     "CHAT",
@@ -134,7 +135,7 @@ class App extends React.Component {
     "HABITABILITY",
   ];
   specialWords = ["HAPPY", "BIRTHDAY", "HILARY"];
-  totalPoints = 696;
+  totalPoints = 700;
   state = {
     introScreen: true,
     winScreen: false,
@@ -243,7 +244,7 @@ class App extends React.Component {
         this.setState({ messageType: positiveMessage }, () => {
           // Sets the Header message
           // This is getting all points
-          if (this.state.score === 696) {
+          if (this.state.score === 700) {
             this.setState({ progressMessage: "Queen Bee" });
             localStorage.setItem("progressMessage", "Queen Bee");
             this.setState({ queenBeeScreen: true });
