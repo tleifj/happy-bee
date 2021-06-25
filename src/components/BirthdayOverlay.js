@@ -1,20 +1,10 @@
 import React from "react";
 
-class QueenBeeOverlay extends React.Component {
+class BirthdayOverlay extends React.Component {
   render() {
-    const {
-      queenBeeScreen,
-      closeQueenBeeScreen,
-      score,
-      foundWords,
-    } = this.props;
+    const { birthdayScreen, closeBirthdayScreen } = this.props;
     return (
-      <div
-        className={
-          "overlay overlay--queen-bee " +
-          (queenBeeScreen ? "overlay--open" : "")
-        }
-      >
+      <div className={"overlay " + (birthdayScreen ? "overlay--open" : "")}>
         <div className="overlay__inner">
           <svg
             width="64"
@@ -52,28 +42,31 @@ class QueenBeeOverlay extends React.Component {
               d="M50.5 49.8053C51.5 49.3053 52.4 48.6053 53.3 47.8053C58 43.1053 58 35.5053 53.3 30.8053C48.6 26.1053 41 26.1053 36.3 30.8053C35.5 31.6053 34.8 32.5053 34.3 33.5053C31.1 27.7053 23.9 25.5053 18 28.7053C12.1 31.9053 9.99997 39.1053 13.2 45.0053C14.4 47.3053 16.4 49.1053 18.8 50.2053C11.5 53.2053 6.29997 59.9053 5.59997 67.4053H0V70.4053H5.59997C6.19997 81.2053 15.1 89.6053 25.9 89.5053H42.7C53.9 88.6053 63 79.4053 63 68.9053C63.2 60.5053 58.2 53.0053 50.5 49.8053ZM21.3 85.9053C13.8 83.9053 8.59997 77.3053 8.59997 68.9053C8.59997 61.6053 14 54.9053 21.3 52.4053V85.9053ZM32.8 86.5053H25.9C25.4 86.5053 24.8 86.5053 24.3 86.4053V51.5053C24.9 51.4053 25.5 51.3053 26 51.3053H32.8V86.5053ZM32.8 48.3053H23.8C21.4 48.3053 19.1 47.4053 17.4 45.7053C13.9 42.2053 13.8 36.5053 17.3 33.0053C20.8 29.5053 26.5 29.4053 30 32.9053C31.7 34.6053 32.7 36.9053 32.7 39.3053L32.8 48.3053ZM35.8 39.3053C35.8 34.3053 39.8 30.3053 44.8 30.3053C49.8 30.3053 53.8 34.3053 53.8 39.3053C53.8 44.3053 49.8 48.3053 44.8 48.3053H35.8V39.3053ZM47.9 74.3053L45.8 76.4053C48.5 79.1053 52.5 80.2053 56.2 79.2053C52.8 83.4053 47.9 86.0053 42.5 86.4053H35.7V51.3053H42.5C52 51.1053 59.8 58.6053 60 68.1053C60 68.4053 60 68.6053 60 68.9053C60 70.8053 59.7 72.7053 59 74.4053C56 77.4053 51 77.4053 47.9 74.3053Z"
               fill="black"
             />
+            <path d="M23 20L34.6111 5L45 20H23Z" fill="#FF85D5" />
             <path
-              d="M22 22V9L28.9818 13.1786L34.2182 9L39.4545 13.1786L46 9V22H22Z"
-              fill="#F8CD0E"
+              d="M22 21L34.6667 5L46 21H22Z"
+              stroke="black"
+              strokeWidth="2.5"
             />
-            <path
-              d="M22 22.5V9.5L29 14L34 9.5L39 14L45.5 9.5V22.5H22Z"
+            <circle
+              cx="34.5"
+              cy="4.5"
+              r="3.25"
+              fill="white"
               stroke="black"
               strokeWidth="2.5"
             />
           </svg>
-
-          <h1>Queen Bee!</h1>
+          <h1>Happy Birthday, Hil!</h1>
           <h2>
-            Amazing! You found everything! All{" "}
-            <strong>{foundWords.length} words,</strong> worth
-            <strong> {score} points.</strong>
+            I hope you had as much fun playing this as I did building it. Love
+            you!
           </h2>
-          <button onClick={closeQueenBeeScreen}>Close</button>
+          <button onClick={closeBirthdayScreen}>Close</button>
         </div>
       </div>
     );
   }
 }
 
-export default QueenBeeOverlay;
+export default BirthdayOverlay;

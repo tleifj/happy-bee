@@ -4,8 +4,8 @@ import Header from "./components/Header";
 import IntroOverlay from "./components/IntroOverlay";
 import Letter from "./components/Letter";
 import Message from "./components/Message";
-import QueenBeeOverlay from "./components/QueenBeeOverlay";
 import WinOverlay from "./components/WinOverlay";
+import BirthdayOverlay from "./components/BirthdayOverlay";
 
 class App extends React.Component {
   letters = ["A", "C", "T", "Y", "L", "H", "D", "P", "B", "I", "R"];
@@ -139,7 +139,7 @@ class App extends React.Component {
   state = {
     introScreen: true,
     winScreen: false,
-    queenBeeScreen: false,
+    birthdayScreen: false,
     guess: "",
     foundWords: [],
     foundSpecialWords: [],
@@ -213,8 +213,8 @@ class App extends React.Component {
   closeWinScreen = () => {
     this.setState({ winScreen: false });
   };
-  closeQueenBeeScreen = () => {
-    this.setState({ queenBeeScreen: false });
+  closeBirthdayScreen = () => {
+    this.setState({ birthdayScreen: false });
   };
   checkGuess = () => {
     // If the word has already been found
@@ -244,10 +244,10 @@ class App extends React.Component {
         this.setState({ messageType: positiveMessage }, () => {
           // Sets the Header message
           // This is getting all points
-          if (this.state.score === 700) {
+          if (this.state.score >= 700) {
             this.setState({ progressMessage: "Queen Bee" });
             localStorage.setItem("progressMessage", "Queen Bee");
-            this.setState({ queenBeeScreen: true });
+            this.setState({ winScreen: true });
 
             this.celebrate();
             setTimeout(() => {
@@ -302,7 +302,7 @@ class App extends React.Component {
         ];
         this.setState({ foundSpecialWords: newFoundSpecialWords }, () => {
           if (this.state.foundSpecialWords.length === 3) {
-            this.setState({ winScreen: true });
+            this.setState({ birthdayScreen: true });
             this.celebrate();
           }
         });
@@ -335,13 +335,13 @@ class App extends React.Component {
           introScreen={this.state.introScreen}
           startGame={this.startGame}
         />
+        <BirthdayOverlay
+          birthdayScreen={this.state.birthdayScreen}
+          closeBirthdayScreen={this.closeBirthdayScreen}
+        />
         <WinOverlay
           winScreen={this.state.winScreen}
           closeWinScreen={this.closeWinScreen}
-        />
-        <QueenBeeOverlay
-          queenBeeScreen={this.state.queenBeeScreen}
-          closeQueenBeeScreen={this.closeQueenBeeScreen}
           score={this.state.score}
           foundWords={this.state.foundWords}
         />
