@@ -139,11 +139,12 @@ class App extends React.Component {
   state = {
     introScreen: true,
     winScreen: false,
+    queenBee: false,
     birthdayScreen: false,
     guess: "",
     foundWords: [],
     foundSpecialWords: [],
-    score: 0,
+    score: 596,
     messageActive: false,
     messageType: "",
     progressMessage: "Beginner",
@@ -247,31 +248,36 @@ class App extends React.Component {
           if (this.state.score >= 700) {
             this.setState({ progressMessage: "Queen Bee" });
             localStorage.setItem("progressMessage", "Queen Bee");
-            this.setState({ winScreen: true });
+            this.setState({ queenBee: true }, () => {
+              this.setState({ winScreen: true });
 
-            this.celebrate();
-            setTimeout(() => {
               this.celebrate();
-            }, 200);
-            this.celebrate();
-            setTimeout(() => {
+              setTimeout(() => {
+                this.celebrate();
+              }, 200);
               this.celebrate();
-            }, 400);
-            this.celebrate();
-            setTimeout(() => {
+              setTimeout(() => {
+                this.celebrate();
+              }, 400);
               this.celebrate();
-            }, 600);
-            this.celebrate();
-            setTimeout(() => {
+              setTimeout(() => {
+                this.celebrate();
+              }, 600);
               this.celebrate();
-            }, 800);
-            this.celebrate();
-            setTimeout(() => {
+              setTimeout(() => {
+                this.celebrate();
+              }, 800);
               this.celebrate();
-            }, 1000);
+              setTimeout(() => {
+                this.celebrate();
+              }, 1000);
+            });
           } else if (this.state.score >= 600) {
             this.setState({ progressMessage: "Genius!" });
             localStorage.setItem("progressMessage", "Genius!");
+            if (this.state.score === 600) {
+              this.setState({ winScreen: true });
+            }
           } else if (this.state.score >= 500) {
             this.setState({ progressMessage: "Amazing" });
             localStorage.setItem("progressMessage", "Amazing");
@@ -341,6 +347,8 @@ class App extends React.Component {
         />
         <WinOverlay
           winScreen={this.state.winScreen}
+          queenBee={this.state.queenBee}
+          progressMessage={this.state.progressMessage}
           closeWinScreen={this.closeWinScreen}
           score={this.state.score}
           foundWords={this.state.foundWords}
