@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import FoundWords from "./components/FoundWords";
 import Header from "./components/Header";
 import IntroOverlay from "./components/IntroOverlay";
 import Letter from "./components/Letter";
@@ -144,7 +145,7 @@ class App extends React.Component {
     guess: "",
     foundWords: [],
     foundSpecialWords: [],
-    score: 596,
+    score: 0,
     messageActive: false,
     messageType: "",
     progressMessage: "Beginner",
@@ -159,12 +160,6 @@ class App extends React.Component {
     if (foundWords) {
       this.setState({ foundWords });
     }
-    // const foundSpecialWords = JSON.parse(
-    //   localStorage.getItem("foundSpecialWords")
-    // );
-    // if (foundSpecialWords) {
-    //   this.setState({ foundSpecialWords });
-    // }
 
     const progressMessage = localStorage.getItem("progressMessage");
     if (progressMessage) {
@@ -246,31 +241,31 @@ class App extends React.Component {
           // Sets the Header message
           // This is getting all points
           if (this.state.score >= 700) {
-            this.setState({ progressMessage: "Queen Bee" });
-            localStorage.setItem("progressMessage", "Queen Bee");
+            this.setState({ progressMessage: "Queen Bee!" });
+            localStorage.setItem("progressMessage", "Queen Bee!");
             this.setState({ queenBee: true }, () => {
               this.setState({ winScreen: true });
 
-              this.celebrate();
-              setTimeout(() => {
-                this.celebrate();
-              }, 200);
-              this.celebrate();
-              setTimeout(() => {
-                this.celebrate();
-              }, 400);
-              this.celebrate();
-              setTimeout(() => {
-                this.celebrate();
-              }, 600);
-              this.celebrate();
-              setTimeout(() => {
-                this.celebrate();
-              }, 800);
-              this.celebrate();
-              setTimeout(() => {
-                this.celebrate();
-              }, 1000);
+              // this.celebrate();
+              // setTimeout(() => {
+              //   this.celebrate();
+              // }, 200);
+              // this.celebrate();
+              // setTimeout(() => {
+              //   this.celebrate();
+              // }, 400);
+              // this.celebrate();
+              // setTimeout(() => {
+              //   this.celebrate();
+              // }, 600);
+              // this.celebrate();
+              // setTimeout(() => {
+              //   this.celebrate();
+              // }, 800);
+              // this.celebrate();
+              // setTimeout(() => {
+              //   this.celebrate();
+              // }, 1000);
             });
           } else if (this.state.score >= 600) {
             this.setState({ progressMessage: "Genius!" });
@@ -374,17 +369,10 @@ class App extends React.Component {
 
         <button onClick={this.deleteFromGuess}>Delete</button>
         <button onClick={this.checkGuess}>Submit</button>
-        <div className="found-words">
-          <p>Found Words</p>
-          {this.state.foundWords.map((key) => (
-            <li
-              className={this.specialWords.includes(key) ? "special-word" : ""}
-              key={key}
-            >
-              {key}
-            </li>
-          ))}
-        </div>
+        <FoundWords
+          foundWords={this.state.foundWords}
+          specialWords={this.specialWords}
+        />
       </div>
     );
   }
