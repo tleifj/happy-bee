@@ -140,12 +140,13 @@ class App extends React.Component {
   state = {
     introScreen: true,
     winScreen: false,
+    genius: false,
     queenBee: false,
     birthdayScreen: false,
     guess: "",
     foundWords: [],
     foundSpecialWords: [],
-    score: 0,
+    score: 575,
     messageActive: false,
     messageType: "",
     progressMessage: "Beginner",
@@ -159,6 +160,11 @@ class App extends React.Component {
     const foundWords = JSON.parse(localStorage.getItem("foundWords"));
     if (foundWords) {
       this.setState({ foundWords });
+    }
+
+    const genius = JSON.parse(localStorage.getItem("genius"));
+    if (genius) {
+      this.setState({ genius });
     }
 
     const progressMessage = localStorage.getItem("progressMessage");
@@ -270,8 +276,11 @@ class App extends React.Component {
           } else if (this.state.score >= 600) {
             this.setState({ progressMessage: "Genius!" });
             localStorage.setItem("progressMessage", "Genius!");
-            if (this.state.score === 600) {
+
+            if (!this.state.genius) {
               this.setState({ winScreen: true });
+              this.setState({ genius: true });
+              localStorage.setItem("genius", true);
             }
           } else if (this.state.score >= 500) {
             this.setState({ progressMessage: "Amazing" });
