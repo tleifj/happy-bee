@@ -194,8 +194,9 @@ header .container {
 .guess-input {
   font-size: 32px;
   font-weight: bold;
-  display: inline;
-
+  display: inline-block;
+  height: 100%;
+  margin: 0;
   position: relative;
 }
 
