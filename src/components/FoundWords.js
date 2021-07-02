@@ -3,7 +3,6 @@ import React from "react";
 class FoundWords extends React.Component {
   render() {
     const { foundWords, specialWords } = this.props;
-    console.log(foundWords);
     if (foundWords.length) {
       return (
         <div className="found-words">

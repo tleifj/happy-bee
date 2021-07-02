@@ -4,7 +4,6 @@ class Header extends React.Component {
     const { words, foundWords, progressMessage, score } = this.props;
     const levels = [0, 1, 2, 3, 4, 5, 6];
     let active = 0;
-    console.log(foundWords);
     levels.forEach((el, index) => {
       if (score >= index * 100) {
         active = index;
