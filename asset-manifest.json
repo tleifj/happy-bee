@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/happy-bee/static/css/main.b48139fb.chunk.css",
-    "main.js": "/happy-bee/static/js/main.22b0e8e1.chunk.js",
-    "main.js.map": "/happy-bee/static/js/main.22b0e8e1.chunk.js.map",
+    "main.js": "/happy-bee/static/js/main.d5d9ca27.chunk.js",
+    "main.js.map": "/happy-bee/static/js/main.d5d9ca27.chunk.js.map",
     "runtime-main.js": "/happy-bee/static/js/runtime-main.d3747507.js",
     "runtime-main.js.map": "/happy-bee/static/js/runtime-main.d3747507.js.map",
     "static/js/2.3e124b4d.chunk.js": "/happy-bee/static/js/2.3e124b4d.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d3747507.js",
     "static/js/2.3e124b4d.chunk.js",
     "static/css/main.b48139fb.chunk.css",
-    "static/js/main.22b0e8e1.chunk.js"
+    "static/js/main.d5d9ca27.chunk.js"
   ]
 }
