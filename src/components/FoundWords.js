@@ -7,14 +7,16 @@ class FoundWords extends React.Component {
       return (
         <div className="found-words">
           <p>Found Words</p>
-          {foundWords.map((key) => (
-            <li
-              className={specialWords.includes(key) ? "special-word" : ""}
-              key={key}
-            >
-              {key}
-            </li>
-          ))}
+          <ol>
+            {foundWords.map((key) => (
+              <li
+                className={specialWords.includes(key) ? "special-word" : ""}
+                key={key}
+              >
+                {key}
+              </li>
+            ))}
+          </ol>
         </div>
       );
     } else {
