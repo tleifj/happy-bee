@@ -86,7 +86,7 @@ class App extends React.Component {
     "CATCHY",
     "CHATTY",
     "CHICHI",
-    "CHILLI",
+    // "CHILLI",
     "CHILLY",
     "DAHLIA",
     "HARDLY",
@@ -103,7 +103,7 @@ class App extends React.Component {
     "THRILL",
     "ARCHAIC",
     // "CATARRH",
-    "CHARILY",
+    // "CHARILY",
     "CHARITY",
     "HABITAT",
     "HALYARD",
@@ -153,6 +153,7 @@ class App extends React.Component {
   };
   componentDidMount() {
     const score = parseInt(localStorage.getItem("score"));
+    console.log(this.words.length);
     if (score) {
       this.setState({ score });
     }
@@ -246,32 +247,32 @@ class App extends React.Component {
         this.setState({ messageType: positiveMessage }, () => {
           // Sets the Header message
           // This is getting all points
-          if (this.state.score >= 700) {
+          if (this.state.foundWords >= 117) {
             this.setState({ progressMessage: "Queen Bee!" });
             localStorage.setItem("progressMessage", "Queen Bee!");
             this.setState({ queenBee: true }, () => {
               this.setState({ winScreen: true });
 
-              // this.celebrate();
-              // setTimeout(() => {
-              //   this.celebrate();
-              // }, 200);
-              // this.celebrate();
-              // setTimeout(() => {
-              //   this.celebrate();
-              // }, 400);
-              // this.celebrate();
-              // setTimeout(() => {
-              //   this.celebrate();
-              // }, 600);
-              // this.celebrate();
-              // setTimeout(() => {
-              //   this.celebrate();
-              // }, 800);
-              // this.celebrate();
-              // setTimeout(() => {
-              //   this.celebrate();
-              // }, 1000);
+              this.celebrate();
+              setTimeout(() => {
+                this.celebrate();
+              }, 200);
+              this.celebrate();
+              setTimeout(() => {
+                this.celebrate();
+              }, 400);
+              this.celebrate();
+              setTimeout(() => {
+                this.celebrate();
+              }, 600);
+              this.celebrate();
+              setTimeout(() => {
+                this.celebrate();
+              }, 800);
+              this.celebrate();
+              setTimeout(() => {
+                this.celebrate();
+              }, 1000);
             });
           } else if (this.state.score >= 600) {
             this.setState({ progressMessage: "Genius!" });
