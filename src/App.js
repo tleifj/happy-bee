@@ -146,7 +146,7 @@ class App extends React.Component {
     guess: "",
     foundWords: [],
     foundSpecialWords: [],
-    score: 575,
+    score: 0,
     messageActive: false,
     messageType: "",
     progressMessage: "Beginner",
