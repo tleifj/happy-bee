@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/happy-bee/static/css/main.e7ed9bf0.chunk.css",
-    "main.js": "/happy-bee/static/js/main.6377a047.chunk.js",
-    "main.js.map": "/happy-bee/static/js/main.6377a047.chunk.js.map",
+    "main.css": "/happy-bee/static/css/main.47bec4df.chunk.css",
+    "main.js": "/happy-bee/static/js/main.fa3bd5f9.chunk.js",
+    "main.js.map": "/happy-bee/static/js/main.fa3bd5f9.chunk.js.map",
     "runtime-main.js": "/happy-bee/static/js/runtime-main.d3747507.js",
     "runtime-main.js.map": "/happy-bee/static/js/runtime-main.d3747507.js.map",
     "static/js/2.3e124b4d.chunk.js": "/happy-bee/static/js/2.3e124b4d.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.fb25f1c1.chunk.js": "/happy-bee/static/js/3.fb25f1c1.chunk.js",
     "static/js/3.fb25f1c1.chunk.js.map": "/happy-bee/static/js/3.fb25f1c1.chunk.js.map",
     "index.html": "/happy-bee/index.html",
-    "static/css/main.e7ed9bf0.chunk.css.map": "/happy-bee/static/css/main.e7ed9bf0.chunk.css.map",
+    "static/css/main.47bec4df.chunk.css.map": "/happy-bee/static/css/main.47bec4df.chunk.css.map",
     "static/js/2.3e124b4d.chunk.js.LICENSE.txt": "/happy-bee/static/js/2.3e124b4d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d3747507.js",
     "static/js/2.3e124b4d.chunk.js",
-    "static/css/main.e7ed9bf0.chunk.css",
-    "static/js/main.6377a047.chunk.js"
+    "static/css/main.47bec4df.chunk.css",
+    "static/js/main.fa3bd5f9.chunk.js"
   ]
 }
