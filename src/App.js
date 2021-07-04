@@ -247,7 +247,7 @@ class App extends React.Component {
         this.setState({ messageType: positiveMessage }, () => {
           // Sets the Header message
           // This is getting all points
-          if (this.state.foundWords >= 117) {
+          if (this.state.foundWords.length >= 117) {
             this.setState({ progressMessage: "Queen Bee!" });
             localStorage.setItem("progressMessage", "Queen Bee!");
             this.setState({ queenBee: true }, () => {

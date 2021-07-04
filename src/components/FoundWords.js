@@ -7,7 +7,7 @@ class FoundWords extends React.Component {
       return (
         <div className="found-words">
           <p>Found Words</p>
-          <ol>
+          <ul>
             {foundWords.map((key) => (
               <li
                 className={specialWords.includes(key) ? "special-word" : ""}
@@ -16,7 +16,7 @@ class FoundWords extends React.Component {
                 {key}
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       );
     } else {

@@ -286,12 +286,18 @@ header .container {
   border-bottom-color: #f8cd05;
 }
 
+.found-words ul {
+  text-align: center;
+  padding: 0;
+  padding-bottom: 60px;
+}
+
 .found-words p {
   font-weight: bold;
 }
 
 .found-words li {
-  /* list-style-type: none; */
+  list-style-type: none;
   margin-bottom: 8px;
 }
 
